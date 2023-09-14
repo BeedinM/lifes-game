@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 import { criarMatriz } from "@/services/criarMatriz";
 import { life } from "@/services/vida";
 
+import styles from '../styles/utils.module.css';
+
+import Celula from "@/components/celula/celula";
+
 export default function Index() {
   const [plano, setPlano] = useState([]);
   const [iniciouJogo, setIniciouJogo] = useState(false);
 
   const criaMatrizInicial = async () => {
-    const matriz = await criarMatriz(5);
+    const matriz = await criarMatriz(30);
     setPlano(matriz);
     setIniciouJogo(true);
   };
@@ -18,11 +22,13 @@ export default function Index() {
     if (iniciouJogo) {
       intervalId = setInterval(() => {
         if (plano && plano.length > 0) {
-          const novoPlano = life(plano);
-          setPlano(novoPlano);
-          console.log(plano)
+          
+          setPlano((planoAnterior) => {
+            const novoPlano = life(planoAnterior);
+            return novoPlano;
+          });
         }
-      }, 2000);
+      }, 1000); 
     }
 
     return () => {
@@ -33,16 +39,21 @@ export default function Index() {
   return (
     <div>
       {!iniciouJogo ? (
-        <button onClick={criaMatrizInicial}>Iniciar Jogo</button>
+        <button onClick={criaMatrizInicial}>Iniciar autômato</button>
       ) : (
-        <div>
+        <div className={styles.container}>
           {plano && plano.length > 0 && (
             <div>
               {plano.map((linha, index) => (
-                <div key={index}>
-                  {linha.map((casa, idx) => (
-                    <div key={idx}>{casa}</div>
-                  ))}
+                <div key={index} className={styles.container2}>
+                  {linha.map((casa, idx) => {
+                    const linhaP = index + 1;
+                    const colunaP = idx + 1;
+                    const idFormat = `${linhaP},${colunaP}`
+                    return (
+                      <Celula key={idx} id={idFormat} item={casa}/>
+                    )
+                  })}
                 </div>
               ))}
             </div>
