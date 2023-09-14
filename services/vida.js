@@ -1,5 +1,10 @@
+function copiarMatriz(matriz) {
+    return matriz.map(linha => [...linha]);
+}
+
 export function life(lista) {
     const tamanho = lista.length;
+    const novaLista = copiarMatriz(lista);
 
     for (let y = 0; y < tamanho; y++) {
         for (let x = 0; x < tamanho; x++) {
@@ -27,12 +32,12 @@ export function life(lista) {
 
             const estouVivo = lista[y][x] === 1 ? true : false;
 
-            if(estouVivo) {
-                laterais < 2 ? lista[y][x] = 0 : laterais === 2 || laterais === 3 ? lista[y][x] = 1 : laterais > 3 ? lista[y][x] = 0 : null;
+            if (estouVivo) {
+                laterais < 2 ? (novaLista[y][x] = 0) : laterais === 2 || laterais === 3 ? (novaLista[y][x] = 1) : laterais > 3 ? (novaLista[y][x] = 0) : null;
             } else {
-                laterais === 3 ? lista[y][x] = 1 : null;
+                laterais === 3 ? (novaLista[y][x] = 1) : null;
             }
         }
     }
-    return lista;
+    return novaLista;
 }
