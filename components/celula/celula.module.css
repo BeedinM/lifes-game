@@ -1,0 +1,33 @@
+.celulaViva {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+
+    border: solid 0.5px grey;
+
+    transition: 0.15s;
+    
+    background-color: black;
+}
+
+.celulaMorta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20px;
+    height: 20px;
+
+    border: solid 0.5px grey;
+
+    transition: 0.15s;
+
+    background-color: white;
+}
+
+.numero {
+    display: none;
+}
