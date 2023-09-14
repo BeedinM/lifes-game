@@ -11,7 +11,7 @@ export default function Index() {
   const [iniciouJogo, setIniciouJogo] = useState(false);
 
   const criaMatrizInicial = async () => {
-    const matriz = await criarMatriz(30);
+    const matriz = await criarMatriz(170);
     setPlano(matriz);
     setIniciouJogo(true);
   };
