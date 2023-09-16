@@ -23,11 +23,15 @@ export function life(lista) {
             // Verificar acima
             if (y > 0) {
                 laterais += lista[y - 1][x];
+                laterais += lista[y - 1][x - 1];
+                laterais += lista[y - 1][x + 1];
             }
             
             // Verificar abaixo
             if (y < tamanho - 1) {
                 laterais += lista[y + 1][x];
+                laterais += lista[y + 1][x - 1];
+                laterais += lista[y + 1][x + 1];
             }
 
             const estouVivo = lista[y][x] === 1 ? true : false;
