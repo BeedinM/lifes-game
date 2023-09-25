@@ -12,3 +12,10 @@
     align-items: center;
     /* gap: 5px; */
 }
+
+.esconde {
+    width: 560px;
+    height: 560px;
+
+    overflow: hidden;
+}
